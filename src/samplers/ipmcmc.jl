@@ -34,7 +34,7 @@ mutable struct IPMCMC{T, F} <: InferenceAlgorithm
   gid                   ::    Int         # group ID
 end
 IPMCMC(n1::Int, n2::Int) = IPMCMC(n1, n2, 32, 16, resampleSystematic, Set(), 0)
-IPMCMC(n1::Int, n2::Int, n3::Int) = IPMCMC(n1, n2, n3, Int(ceil(n3/2)), resampleSystematic, Set(), 0)
+IPMCMC(n1::Int, n2::Int, n3::Int) = IPMCMC(n1, n2, n3, Int(cld(n3,2)), resampleSystematic, Set(), 0)
 IPMCMC(n1::Int, n2::Int, n3::Int, n4::Int) = IPMCMC(n1, n2, n3, n4, resampleSystematic, Set(), 0)
 function IPMCMC(n1::Int, n2::Int, n3::Int, n4::Int, space...)
   _space = isa(space, Symbol) ? Set([space]) : Set(space)
