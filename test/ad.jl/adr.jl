@@ -23,7 +23,7 @@ mvn = collect(Iterators.filter(vn -> vn.sym == :m, keys(vi)))[1]
 _s = getval(vi, svn)[1]
 _m = getval(vi, mvn)[1]
 
-x = map(_->Float64(_), vi[nothing])
+x = map(Float64, vi[nothing])
 ∇E = gradient_reverse(x, vi, ad_test_f)
 # println(vi.vns)
 # println(∇E)
